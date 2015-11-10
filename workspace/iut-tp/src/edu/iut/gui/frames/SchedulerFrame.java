@@ -15,6 +15,8 @@ import edu.iut.gui.widget.agenda.AgendaPanelFactory.ActiveView;
 
 public class SchedulerFrame extends JFrame {
 	
+
+	private static final long serialVersionUID = 1L;
 	protected void setupUI() {
 		JPanel contentPane = new JPanel();
 		CardLayout layerLayout = new CardLayout();
