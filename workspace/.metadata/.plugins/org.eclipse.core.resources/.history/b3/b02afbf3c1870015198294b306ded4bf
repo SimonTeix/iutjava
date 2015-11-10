@@ -16,15 +16,15 @@ public class ApplicationSession {
 	protected Logger sessionExceptionLogger;
 
 
-	private static /*Qu'est ce qu'un singleton ?*/ ApplicationSession session = null;
+	private /*Qu'est ce qu'un singleton ?*/ ApplicationSession session = null;
 	private ApplicationSession() {
 		/* Definir US comme locale par défaut */
-		Locale.setDefault(locale);/* à compléter */
+		Locale.getDefault();/* à compléter */
 		
 		locale = Locale.getDefault();
 		resourceBundle= ResourceBundle.getBundle();/* à compléter */
 		sessionGuiLogger = /* Initialiser le logger */
-		sessionGuiLogger.setLevel(/* Touls les message doivent être affiché */);
+		sessionGuiLogger.setLevel(/* Touls les message doivent être affiché */));
 		sessionExceptionLogger = /* Logger pour exception */
 		sessionExceptionLogger.setLevel(/* Touls les message doivent être affiché */);
 	}

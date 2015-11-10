@@ -24,7 +24,7 @@ public class ApplicationSession {
 		locale = Locale.getDefault();
 		resourceBundle= ResourceBundle.getBundle();/* à compléter */
 		sessionGuiLogger = /* Initialiser le logger */
-		sessionGuiLogger.setLevel(/* Touls les message doivent être affiché */);
+		sessionGuiLogger.setLevel(/* Touls les message doivent être affiché */));
 		sessionExceptionLogger = /* Logger pour exception */
 		sessionExceptionLogger.setLevel(/* Touls les message doivent être affiché */);
 	}
