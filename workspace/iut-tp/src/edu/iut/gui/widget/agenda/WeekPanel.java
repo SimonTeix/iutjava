@@ -12,37 +12,38 @@ public class WeekPanel extends EventPanel {
 	// Exercice 4
 	public enum WeekDayNames {
 		EMPTYDAY("",""),
-		MONDAY(/* Internationalisation */),
-		TUESDAY(/* Internationalisation */),
-		WEDNESDAY(/* Internationalisation */),
-		THURSDAY(/* Internationalisation */),
-		FRIDAY(/* Internationalisation */),
-		SATURDAY(/* Internationalisation */),
-		SUNDAY(/* Internationalisation */);
-		
+		MONDAY("monday","mon"),
+		TUESDAY("tuesday","tue"),
+		WEDNESDAY("wednesday", "wed"),
+		THURSDAY("thursday","thu"),
+		FRIDAY("friday","fri"),
+		SATURDAY("saturday","sat"),
+		SUNDAY("sunday","sun");
+
 		private String name;
 		private String shortName;
-		
+
 		WeekDayNames(String name,String shortName) {
-			this.name = name;
-			this.shortName = shortName;
+
+			this.name = !name.equals("") ? ApplicationSession.instance().getString(name) : name;
+			this.shortName = !shortName.equals("") ? ApplicationSession.instance().getString(shortName) : shortName;
 		}
-		
+
 		public String getShortName() {
 			return shortName;
 		}
-		
+
 		public String toString() {
 			return name;
 		}
 	}
-	
+
 	public WeekPanel() {
 		super(ActiveView.WEEK_VIEW);
-		GridLayout daysOfWeekLayout = new GridLayout(1,7);		
+		GridLayout daysOfWeekLayout = new GridLayout(1,7);
 		this.setLayout(daysOfWeekLayout);
 		for (int di = 0;di<8;di++)	{
-			this.add(new DayPanel(ActiveView.WEEK_VIEW,WeekDayNames.values()[di+1]));
+			this.add(new DayPanel(ActiveView.WEEK_VIEW,WeekDayNames.values()[di]));
 		}
 	}
 }
