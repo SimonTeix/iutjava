@@ -5,11 +5,6 @@ import java.util.Date;
 
 public class ExamEvent {
 	public ExamEvent() {		
-		this.examDate=null;
-		this.student=null;
-		this.jury=null;
-		this.classroom=null;
-		this.documents=null;
 	}
 	
 	public ExamEvent(Date date, Person person, ArrayList<Person> jury, Classroom classRoom, ArrayList<Document> document) {
