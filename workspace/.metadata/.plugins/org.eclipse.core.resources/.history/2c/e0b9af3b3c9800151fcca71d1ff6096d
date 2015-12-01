@@ -20,22 +20,14 @@ public class ExamEvent {
 		this.documents=document;
 	}
 	
-	public void addEvent(ExamEvent e){
-		this.addEvent(e);
-		
-	}
-	
-	
-
 	/** EX2: FAITE LES ACCESSEURS DES ATTRIBUTS, AJOUTER DES ATTRIBUT ? **/
 	protected Date examDate;
 	protected Person student;
 	protected ArrayList<Person> jury;
 	protected Classroom classroom;
 	protected ArrayList<Document> documents;
-	
 	public Date getExamDate() {
-	return examDate;
+		return examDate;
 	}
 
 	public void setExamDate(Date examDate) {

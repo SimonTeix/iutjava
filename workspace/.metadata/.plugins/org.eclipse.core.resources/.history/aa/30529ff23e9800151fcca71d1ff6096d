@@ -62,7 +62,6 @@ public class CommandLineParser {
 						}
 						break;
 				
-						
 					default:
 						parseErrors.add("Unrecognize option type.");						
 				}

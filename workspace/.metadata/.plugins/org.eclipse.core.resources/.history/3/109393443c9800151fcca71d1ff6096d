@@ -9,7 +9,7 @@ public class Agenda extends ExamEvent/* EX2: COLLECTION d'ExamEvent */ {
 	}
 	
 	public void addCheckedEvent(ExamEvent examEvent) {
-		this.addEvent(examEvent);
+		this.add(examEvent);
 	}
 
 
