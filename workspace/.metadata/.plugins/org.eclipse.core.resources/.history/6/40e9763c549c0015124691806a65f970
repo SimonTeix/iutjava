@@ -64,7 +64,7 @@ public class WeekPanel extends EventPanel {
 		Date d = calendar.getTime();
 
 		for (int di = 0;di<7;di++)	{
-			this.add(new DayPanel(ActiveView.WEEK_VIEW,d));
+			this.add(new DayPanel(ActiveView.WEEK_VIEW,d, DateUtils.isSameDate(d, date));
 			calendar.add(Calendar.DATE, 1);
 			d = calendar.getTime();
 		}

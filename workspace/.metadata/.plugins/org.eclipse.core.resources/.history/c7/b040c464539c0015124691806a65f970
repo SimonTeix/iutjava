@@ -17,8 +17,11 @@ public class DayPanel extends EventPanel {
 
 	private JLabel label;
 
-	
-	public DayPanel(ActiveView activeView,Date date) {
+	public DayPanel(ActiveView activeView, Date date){
+		this(activeView, date, null);
+	}
+
+	public DayPanel(ActiveView activeView,Date date, Color color) {
 		super(activeView, date);
 		switch (activeView) {
 		case DAY_VIEW:
@@ -49,7 +52,9 @@ public class DayPanel extends EventPanel {
 
 		}
 
-	
+		if(color != null && label != null){
+			label.setForeground(color);
+		}
 	}
 
 	@Override
