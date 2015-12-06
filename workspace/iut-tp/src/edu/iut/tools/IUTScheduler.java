@@ -16,12 +16,10 @@ public class IUTScheduler {
 		commandLineParser.addOption(configOption);
 		commandLineParser.parse(args);
 		System.err.println("Option:"+commandLineParser.getOption("config").getValue());
-		SwingUtilities.invokeLater(new Runnable() {
-		    public void run() {
-		        JFrame mainFrame = new edu.iut.gui.frames.SchedulerFrame("IUT Scheduler");
-		        mainFrame.setVisible(true);	        
-		    }
-		});
+		SwingUtilities.invokeLater(() -> {
+            JFrame mainFrame = new edu.iut.gui.frames.SchedulerFrame("IUT Scheduler");
+            mainFrame.setVisible(true);
+        });
 	}
 	
 }

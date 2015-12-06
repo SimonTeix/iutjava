@@ -22,11 +22,7 @@ public class CommandLineOption <ValueType>{
 	}
 	
 	public CommandLineOption() {
-		this.value=null;
-		this.key=null;
-		this.description=null;
-		this.defaultValue=null;
-		
+		this(OptionType.NONE, "", "", null);
 		/* EX1: Initializer les attributs */
 	}
 	public CommandLineOption(final OptionType optionType, final String key, final String description, final ValueType defaultValue) {

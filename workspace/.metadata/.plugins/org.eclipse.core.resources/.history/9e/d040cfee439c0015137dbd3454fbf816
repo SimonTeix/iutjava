@@ -1,0 +1,17 @@
+package edu.iut.app;
+
+import java.util.LinkedList;
+
+
+public class Agenda extends ExamEvent/* EX2: COLLECTION d'ExamEvent */ {
+	public Agenda() {	
+		ExamEvent e=new ExamEvent();
+	}
+	
+	public void addCheckedEvent(ExamEvent examEvent) {
+		this.addEvent(examEvent);
+	}
+
+
+	
+}

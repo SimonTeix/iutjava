@@ -61,7 +61,10 @@ public class CommandLineParser {
 							parseErrors.add("Option should have a key and a value.");
 						}
 						break;
-				
+					case NOVALUE:
+						CommandLineOption<Void> voidOption = (CommandLineOption<Void>)options.get(keyValue[0]);
+						break;
+
 						
 					default:
 						parseErrors.add("Unrecognize option type.");						

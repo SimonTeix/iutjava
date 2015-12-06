@@ -5,11 +5,7 @@ import java.util.Date;
 
 public class ExamEvent {
 	public ExamEvent() {		
-		this.examDate=null;
-		this.student=null;
-		this.jury=null;
-		this.classroom=null;
-		this.documents=null;
+		
 	}
 	
 	public ExamEvent(Date date, Person person, ArrayList<Person> jury, Classroom classRoom, ArrayList<Document> document) {
@@ -20,11 +16,7 @@ public class ExamEvent {
 		this.documents=document;
 	}
 	
-	public void addEvent(ExamEvent e){
-		this.addEvent(e);
-		
-	}
-	
+
 	
 
 	/** EX2: FAITE LES ACCESSEURS DES ATTRIBUTS, AJOUTER DES ATTRIBUT ? **/

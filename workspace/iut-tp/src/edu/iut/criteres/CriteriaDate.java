@@ -1,0 +1,61 @@
+package edu.iut.criteres;
+
+import edu.iut.app.ExamEvent;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.ListIterator;
+
+
+
+public class CriteriaDate implements Criteria{
+	
+    private Date debut;
+    private Date fin;
+
+    public CriteriaDate(Date date){
+        Calendar cal = Calendar.getInstance();
+
+
+        cal.setTime(debut);
+        cal.set(Calendar.HOUR, 0);
+        cal.set(Calendar.MINUTE, 0);
+        this.debut = cal.getTime();
+
+        cal.setTime(debut);
+        cal.set(Calendar.HOUR, 23);
+        cal.set(Calendar.MINUTE, 59);
+        this.fin = cal.getTime();
+    }
+
+    public CriteriaDate(Date debut, Date fin){
+        this.debut = debut;
+        this.fin = fin;
+    }
+	@Override
+	public List<ExamEvent> meetCriteria(List<ExamEvent> ExamDate) {
+
+		 ListIterator<ExamEvent> iterator = new ArrayList<>(ExamDate).listIterator();
+	        while (iterator.hasNext()){
+	            Date examDate = iterator.next().getExamDate();
+	            boolean match;
+
+	            if(fin == null){
+	                match = examDate.equals(debut);
+	            }else{
+	                match = (examDate.after(debut) && examDate.before(fin)) || examDate.equals(debut) || examDate.equals(fin);
+	            }
+
+	            if(!match){
+	                iterator.remove();
+	            }
+
+	        }
+
+		return ExamDate;
+		
+	}
+
+}
