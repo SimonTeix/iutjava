@@ -1,5 +1,9 @@
 package edu.iut.app;
 
+/**
+ * Spécialisation du logger pour l'envoi de messages erreurs.
+ *
+ */
 public class ApplicationErrorLog extends AbstractApplicationLog {
 
 	public ApplicationErrorLog() {

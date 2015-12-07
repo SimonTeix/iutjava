@@ -7,9 +7,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
+/**
+ * Critere avec comme critere une personne précise.
+ *
+ */
 public class CriteriaPerson implements Criteria{
 	private Person person;
 
+    /**
+     * @param person
+     * builder.
+     */
     public CriteriaPerson(Person person){
         this.person = person;
     }

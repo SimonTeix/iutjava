@@ -1,5 +1,10 @@
 package edu.iut.app;
 
+/**
+ *Définit une personne dans l'app.
+ * 
+ *
+ */
 public class Person {
 	
 	public enum PersonFunction{
@@ -10,6 +15,10 @@ public class Person {
 		
 		private String personFunction;
 		
+		/**
+		 * @param personFunction
+		 * set la fonction de la personne.
+		 */
 		PersonFunction(String personFunction) {
 			this.personFunction = personFunction;
 		}
@@ -19,10 +28,21 @@ public class Person {
 		}		
 	}
 	
+	/**
+	 * builder.
+	 */
 	public Person() {
 		personFunction = PersonFunction.NONE;
 	}
 	
+	/**
+	 * @param personFunction
+	 * @param firstname
+	 * @param lastname
+	 * @param email
+	 * @param phone
+	 * Alt builder.
+	 */
 	public Person(PersonFunction personFunction,
 				  String firstname,
 				  String lastname,
@@ -35,35 +55,70 @@ public class Person {
 		this.phone = phone;
 	}
 	
+	/**
+	 * @param function
+	 * setter.
+	 */
 	public void setFunction(PersonFunction function) {
 		this.personFunction = function;
 	}
+	/**
+	 * @return
+	 * getter
+	 */
 	public PersonFunction getFunction() {
 		return personFunction;
 	}
 	
+	/**
+	 * @param firstname
+	 * setter
+	 */
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
+	/**
+	 * @return
+	 * getter
+	 */
 	public String getFirstname() {
 		return firstname;
 	}
 	
+	/**
+	 * @param lastname
+	 * setter
+	 */
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
-	}
+	}	/**
+	 * @return
+	 * getter
+	 */
 	public String getLastname() {
 		return lastname;
-	}
+	}	/**
+	 * @param lastname
+	 * setter
+	 */
 	public void setEmail(String email) {
 		this.email = email;
-	}
+	}	/**
+	 * @return
+	 * getter
+	 */
 	public String getEmail() {
 		return email;
-	}
+	}	/**
+	 * @param lastname
+	 * setter
+	 */
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
+	}/**
+	 * @return
+	 * getter
+	 */
 	public String getPhone() {
 		return phone;
 	}

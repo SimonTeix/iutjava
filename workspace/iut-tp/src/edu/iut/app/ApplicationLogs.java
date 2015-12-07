@@ -3,11 +3,19 @@ package edu.iut.app;
 import java.util.ArrayList;
 
 
+/**
+ * Classe de traitement des logs.
+ *
+ */
 public class ApplicationLogs extends ArrayList<IApplicationLog> {
 
 	public ApplicationLogs() {		
 	}
 	
+	/**
+	 * @return
+	 * retourne les logs de l'appli, avec uniquement les messages d'erreurs.
+	 */
 	public ArrayList<IApplicationLog> getErrors() {
 		ArrayList<IApplicationLog> filteredLogs = new ArrayList<IApplicationLog>();
 		for (IApplicationLog a : this) {
@@ -17,6 +25,10 @@ public class ApplicationLogs extends ArrayList<IApplicationLog> {
 		}
 		return filteredLogs;
 	}
+	/**
+	 * @return
+	 * retourne les logs avec uniquement les warnings
+	 */
 	public ArrayList<IApplicationLog> getWarnings() {
 		ArrayList<IApplicationLog> filteredLogs = new ArrayList<IApplicationLog>();
 		for (IApplicationLog a : this) {
@@ -26,6 +38,10 @@ public class ApplicationLogs extends ArrayList<IApplicationLog> {
 		}
 		return filteredLogs;
 	}
+	/**
+	 * @return
+	 * retourne les logs avec uniquement les messages d'information
+	 */
 	public ArrayList<IApplicationLog> getInfos() {
 		ArrayList<IApplicationLog> filteredLogs = new ArrayList<IApplicationLog>();
 		for (IApplicationLog a : this) {

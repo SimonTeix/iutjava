@@ -4,10 +4,20 @@ import java.util.Collections;
 import java.util.LinkedList;
 
 
+/**
+ *  *
+ * La classe gère une collection d'events
+ */
+
 public class Agenda extends LinkedList<ExamEvent>/* EX2: COLLECTION d'ExamEvent */ {
 	public Agenda() {	
 	}
 	
+	
+	/**
+	 * @param examEvent
+	 * Ajoute à l'agenda un event.
+	 */
 	public void addCheckedEvent(ExamEvent examEvent) {
 		this.add(examEvent);
 

@@ -5,6 +5,10 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Classe singleton de l'application, définissant la session de soutenances à traiter.
+ *
+ */
 public class ApplicationSession {
 	
 	protected Agenda agenda;
@@ -17,6 +21,10 @@ public class ApplicationSession {
 
 
 	private static ApplicationSession session = null;
+	
+	/**
+	 * Constructeur.
+	 */
 	private ApplicationSession() {
 		agenda = new Agenda();
 		locale = Locale.getDefault();
@@ -41,6 +49,10 @@ public class ApplicationSession {
 	}
 	
 	
+	/**
+	 * @return
+	 * retourne une nouvelle session si il n'en existe pas.
+	 */
 	static public ApplicationSession instance() {
 		if (session == null) {			
 			session = new ApplicationSession();
@@ -48,13 +60,25 @@ public class ApplicationSession {
 		return session;
 	}
 	
+	/**
+	 * @return
+	 * getter logger.
+	 */
 	public Logger getGUILogger() {
 		return sessionGuiLogger;
 	}
+	/**
+	 * @return
+	 * getter du logger d'exceptions
+	 */
 	public Logger getExceptionLogger() {
 		return sessionExceptionLogger;
 	}
 	
+	/**
+	 * @param locale
+	 * Setter locale.
+	 */
 	public void setLocale(Locale locale){
 		this.locale = locale;
 		Locale.setDefault(this.locale);
@@ -65,13 +89,25 @@ public class ApplicationSession {
 		return resourceBundle.getString(key);
 	}
 	
+	/**
+	 * @return
+	 * getters des jours
+	 */
 	public String[] getDays() {
 		return days;
 	}
+	/**
+	 * @return
+	 * getters des mois
+	 */
 	public String[] getMonths() {
 		return months;
 	}
 
+	/**
+	 * @return
+	 * getter de l'agenda
+	 */
 	public Agenda getAgenda() {
 		return agenda;
 	}

@@ -2,16 +2,25 @@ package edu.iut.app;
 
 import java.util.ArrayList;
 
+
+/**
+ * Cette classe abstraite gère les logs.
+ *
+ */
 public abstract class AbstractApplicationLog implements IApplicationLog {
 
 	protected String message;
 	protected ArrayList<IApplicationLogListener> listeners;
 	
+	/**
+	 * Constructeur par defaut
+	 */
 	public AbstractApplicationLog() {
 		message = null;
 		listeners = new ArrayList<IApplicationLogListener>();
 	}
 	
+
 	@Override
 	public abstract void setMessage(String message);
 

@@ -1,5 +1,9 @@
 package edu.iut.app;
 
+/**
+ * Spécialisation du logger pour les warnings.
+ *
+ */
 public class ApplicationWarningLog extends AbstractApplicationLog {
 
 	public ApplicationWarningLog() {

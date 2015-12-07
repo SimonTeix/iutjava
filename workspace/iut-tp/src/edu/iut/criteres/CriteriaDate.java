@@ -10,6 +10,10 @@ import java.util.ListIterator;
 
 
 
+/**
+ * Spécialisation de critere selon la date.
+ *
+ */
 public class CriteriaDate implements Criteria{
 	
     private Date debut;
@@ -30,6 +34,11 @@ public class CriteriaDate implements Criteria{
         this.fin = cal.getTime();
     }
 
+    /**
+     * @param debut
+     * @param fin
+     * builder.
+     */
     public CriteriaDate(Date debut, Date fin){
         this.debut = debut;
         this.fin = fin;

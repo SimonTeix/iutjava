@@ -1,5 +1,9 @@
 package edu.iut.app;
 
+/**
+ * interface du log de l'app.
+ *
+ */
 public interface IApplicationLog {
 	public void setMessage(String message);
 	public String getMessage();

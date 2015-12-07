@@ -1,5 +1,9 @@
 package edu.iut.exceptions;
 
+/**
+ * gestion des exceptions.
+ *
+ */
 public class IUTException extends Exception {
 	public IUTException() {
 		super();

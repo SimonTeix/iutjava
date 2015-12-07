@@ -7,11 +7,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
+/**
+ *Critere selon la salle.
+ *
+ */
 public class CriteriaSalle implements Criteria{
 
 
     private Classroom salle;
 
+    /**
+     * @param salle
+     * builder.
+     */
     public CriteriaSalle(Classroom salle){
         this.salle = salle;
     }

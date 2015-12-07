@@ -4,22 +4,37 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import java.io.File;
 
+/**
+ * Class du praser de la ligne de commande.
+ *
+ */
 public class CommandLineParser {
 	
 	protected HashMap<String,CommandLineOption<?>> options;
 	protected ArrayList<String> parseErrors;
 		
+	/**
+	 * Default builder.
+	 */
 	public CommandLineParser() {
 		options = new HashMap<String, CommandLineOption<?>>();
 		parseErrors = new ArrayList<String>();
 	}
 	
+	/**
+	 * @param option
+	 * Ajout d'options.
+	 */
 	public void addOption(CommandLineOption<?> option) {
 		if (option != null) {
 			options.put(option.getKey(),option);
 		}
 	}
 	
+	/**
+	 * @param args
+	 * Parse selon le type des arguments envoyés.
+	 */
 	public void parse(String[] args) {
 		for (String argument: args) {
 			String[] keyValue=argument.split("=");
@@ -73,6 +88,11 @@ public class CommandLineParser {
 		}
 	}
 	
+	/**
+	 * @param key
+	 * @return
+	 * getter option
+	 */
 	public CommandLineOption<?> getOption(String key) {
 		if (options.containsKey(key)) {
 			return options.get(key);
@@ -80,6 +100,10 @@ public class CommandLineParser {
 		return null;
 	}
 	
+	/**
+	 * @return
+	 * getter des ereurs de parse.
+	 */
 	public ArrayList<String> getErrors() {
 		return parseErrors;
 	}
