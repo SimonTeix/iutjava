@@ -1,103 +1,68 @@
 package edu.iut.gui.widget.agenda;
 
-import edu.iut.app.ApplicationSession;
-import edu.iut.app.IDateProvider;
-
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import javax.swing.plaf.BorderUIResource;
-import java.awt.*;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.util.Date;
 
-public class ControlAgendaViewPanel extends JPanel implements ChangeListener, ItemListener{
+import javax.swing.BoxLayout;
+import javax.swing.JComboBox;
+import javax.swing.JSpinner;
+import javax.swing.JPanel;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.SpinnerModel;
 
-	private IDateProvider provider;
+import edu.iut.app.ApplicationSession;
 
-	private CardLayout agendaViewLayout;
-	private JPanel contentPane;
+public class ControlAgendaViewPanel extends JPanel {
 
-	private JSpinner yearSpinner;
-	private JComboBox<String> monthsCombo;
-	private JComboBox<Integer> daysCombo;
-
-	private Calendar calendar;
-
-	private final Border errorBorder = BorderFactory.createMatteBorder(1, 1, 1, 1,Color.RED);
-	private final Border defaultBorder = BorderFactory.createEmptyBorder(1,1,1,1);
+	CardLayout agendaViewLayout;
+	JPanel contentPane;
+	
+	int selectedYear;
+	int selectedMonth;
+	int selectedDay;
 	
 	public ControlAgendaViewPanel(CardLayout layerLayout, final JPanel contentPane) {
 
-		calendar = new GregorianCalendar();
-		calendar.setLenient(false);
-
 		this.agendaViewLayout = layerLayout;
 		this.contentPane = contentPane;
+		JPanel commandPanel = new JPanel();
+		JPanel bottom = new JPanel();
+		commandPanel.setLayout(new BoxLayout(commandPanel, BoxLayout.PAGE_AXIS));
+		Calendar calendar = Calendar.getInstance();
+        SpinnerNumberModel dateModel = new SpinnerNumberModel(calendar.get(Calendar.YEAR),
+        												calendar.get(Calendar.YEAR)-5,
+        												calendar.get(Calendar.YEAR)+5,
+        												1);
+        JSpinner  yearsSpinner       = new JSpinner(dateModel);
+        yearsSpinner.setEditor(new JSpinner.NumberEditor(yearsSpinner, "#"));
+		JComboBox monthComboBox      = new JComboBox(ApplicationSession.instance().getMonths());
+		JComboBox daysOfWeekComboBox = new JComboBox(ApplicationSession.instance().getDays());
+		/*nextView.addActionListener(new ActionListener() {
 
-		int year = Calendar.getInstance().get(Calendar.YEAR);
-		int minYear = year-year%10;
-		int maxYear = minYear+10;
-
-		SpinnerNumberModel model = new SpinnerNumberModel(year, minYear, maxYear, 1);
-		yearSpinner = new JSpinner(model);
-
-		monthsCombo = new JComboBox<>(ApplicationSession.instance().getMonths());
-
-		Integer[] days = new Integer[31];
-		for(int i = 1; i <= 31; i++) days[i-1] = i;
-		daysCombo = new JComboBox<>(days);
-
-		yearSpinner.addChangeListener((ChangeListener) this);
-		monthsCombo.addItemListener((ItemListener) this);
-		daysCombo.addItemListener((ItemListener) this);
-
-		add(yearSpinner);
-		add(monthsCombo);
-		add(daysCombo);
-
-		setBorder(defaultBorder);
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				agendaViewLayout.next(contentPane);				
+			}			
+		});*/
+		commandPanel.add(yearsSpinner);
+		commandPanel.add(monthComboBox);
+		commandPanel.add(daysOfWeekComboBox);
+		this.add(commandPanel, BorderLayout.CENTER);
+        this.add(bottom, BorderLayout.PAGE_END);
 	}
-
-
-	public void setDateProvider(IDateProvider provider){
-		this.provider = provider;
+	
+	public int getYear() {
+		return selectedYear;
 	}
-
-	@Override
-	public void stateChanged(ChangeEvent e) {
-		calendar.set(Calendar.YEAR, (int) yearSpinner.getValue());
-		update(Calendar.YEAR, (int) yearSpinner.getValue());
+	public int getMonth() {
+		return selectedMonth;
 	}
-
-	@Override
-	public void itemStateChanged(ItemEvent e) {
-		if(e.getSource() == monthsCombo) {
-			calendar.set(Calendar.MONTH, monthsCombo.getSelectedIndex());
-			update(Calendar.MONTH, monthsCombo.getSelectedIndex());
-		}else if(e.getSource() == daysCombo) {
-			calendar.set(Calendar.DAY_OF_MONTH, daysCombo.getSelectedIndex()+1);
-			update(Calendar.DAY_OF_MONTH, daysCombo.getSelectedIndex()+1);
-		}
-	}
-
-	private void update(int field, int value){
-		try {
-
-			calendar.set(field, value);
-
-			if (provider != null)
-				provider.setDate(calendar.getTime());
-
-			setBorder(defaultBorder);
-
-		}catch(IllegalArgumentException ex){
-
-			setBorder(errorBorder);
-		}
+	public int getDay() {
+		return selectedDay;
 	}
 	
 }

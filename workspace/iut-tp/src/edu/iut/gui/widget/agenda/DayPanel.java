@@ -1,9 +1,7 @@
 package edu.iut.gui.widget.agenda;
 
-import java.awt.*;
-import java.text.SimpleDateFormat;
+import java.awt.GridLayout;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -13,50 +11,38 @@ import edu.iut.gui.widget.agenda.WeekPanel.WeekDayNames;
 
 public class DayPanel extends EventPanel {
 
-	private final static SimpleDateFormat formater = new SimpleDateFormat("EE d");
-
-	private JLabel label;
-
-	
-	public DayPanel(ActiveView activeView,Date date) {
-		super(activeView, date);
+	public DayPanel(ActiveView activeView,WeekDayNames weekDayNames) {
+		super(activeView);
 		switch (activeView) {
 		case DAY_VIEW:
 		case WEEK_VIEW:
 			GridLayout daysLayout;
-			if(date == null) {
-				daysLayout = new GridLayout(24, 1);
+			switch(weekDayNames) {
+			case EMPTYDAY:
+				daysLayout = new GridLayout(24,1);
 				this.setLayout(daysLayout);
 				break;
-			}else{
+			default:
 				daysLayout = new GridLayout(25,1);
 				this.setLayout(daysLayout);
-				label = new JLabel(formater.format(date));
-				this.add(label);
+				this.add(new JLabel(weekDayNames.toString()));
 			}
-
+						
 			for (int hi = 0;hi<24;hi++) {
 				JPanel hour = new JPanel();
-				hour.add(new JLabel(Integer.toString(hi)));
+				// EX4 : Creer votre propre widget permettant, l'ajout d'un évènement et d'une personne
+				hour.add(new JLabel(new Integer(hi).toString()));
 				this.add(hour);
 			}
 			break;
 		case MONTH_VIEW:
 			JPanel hour = new JPanel();
-			label = new JLabel(formater.format(date));
-			hour.add(label);
+			hour.add(new JLabel("H"));
 			this.add(hour);
-
+		
 		}
-
+	}
 	
-	}
-
-	@Override
-	public void refresh() {
-
-	}
-
 	protected void setupUIDayView() {
 		
 	}
